@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>xau-lab</title>
+<link rel="stylesheet" href="site.css">
+<!-- Static shell only: no research content lives in this repo. app.js reads task ?id= from a private database after sign-in. -->
+<script>try{if(localStorage.getItem('xau.session'))document.documentElement.dataset.auth='in'}catch(e){}</script>
+</head>
+<body data-page="task">
+<div class="scrollbar" aria-hidden="true"></div>
+<main>
+  <nav class="top">
+    <a class="brand" href="./"><i></i>xau-lab</a>
+    <span class="nav-r"><a href="./">← 全部任务</a><button type="button" class="signout authed" id="signout">退出</button></span>
+  </nav>
+
+  <section class="hero">
+    <canvas data-walk="ambient" aria-hidden="true"></canvas>
+    <div>
+      <form class="login" method="post" action="#" autocomplete="on">
+        <h2>登录后查看</h2>
+        <p>研究内容存放在私有数据库，仅所有者可读。</p>
+        <label>邮箱<input type="email" name="email" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required></label>
+        <label>密码<input type="password" name="password" autocomplete="current-password" required></label>
+        <button type="submit">登录</button>
+        <p class="msg" role="alert"></p>
+        <noscript><p class="msg">需要启用 JavaScript 才能登录。</p></noscript>
+      </form>
+      <p class="state authed" id="state" role="status" hidden></p>
+      <div class="authed" id="hero-copy"></div>
+    </div>
+    <div class="scene" aria-hidden="true"><ol class="stack" id="stack"><li class="slab s-todo" style="--i:0"></li><li class="slab s-todo" style="--i:1"></li><li class="slab s-todo" style="--i:2"></li></ol></div>
+  </section>
+
+  <nav class="secnav authed" id="secnav" aria-label="章节" hidden><a href="#problem">问题</a><a href="#idea">想法</a><a href="#proof">证据</a><a href="#solution">结论</a><a href="#path">步骤</a><a href="#issues">问题清单</a><a href="#data">数据</a><a href="#files">文件</a><a href="#log">记录</a></nav>
+
+  <div class="grid authed" id="grid" hidden>
+    <section id="problem" class="panel half reveal"><h2>Problem <em>问题</em></h2><p data-f="problem"></p></section>
+    <section id="idea" class="panel half reveal"><h2>Idea <em>想法</em></h2><p data-f="idea"></p></section>
+    <section id="proof" class="panel reveal"><h2>Proof <em>证据</em></h2><div class="proofs" data-f="proof"></div></section>
+    <section id="solution" class="panel solution reveal"><h2>Solution <em>结论</em></h2><p data-f="solution"></p></section>
+    <section id="path" class="panel w5 reveal"><h2>Path <em>步骤</em></h2><ol class="steps" data-f="path"></ol></section>
+    <section id="issues" class="panel w7 reveal"><h2>Issues <em>问题清单</em></h2><ul class="issues" data-f="issues"></ul></section>
+    <section id="data" class="panel reveal"><h2>Data <em>数据</em></h2><dl class="stats" data-f="data"></dl></section>
+    <section id="files" class="panel w5 reveal"><h2>Files <em>文件</em></h2><ul class="files" data-f="files"></ul></section>
+    <section id="log" class="panel w7 reveal"><h2>Log <em>记录</em></h2><ul class="log" data-f="log"></ul></section>
+  </div>
+</main>
+<script src="config.js"></script>
+<script src="site.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
